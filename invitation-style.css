@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 
-body {
+html, body {
     font-family: 'Cormorant Garamond', 'Georgia', serif;
     background: #f8d5d9;
     min-height: 100vh;
@@ -239,20 +239,6 @@ body {
 .wax-seal{ z-index: 9; }
 .heart-emitter{ z-index: 10; }
 
-.envelope-back::before,
-.envelope-back::after{
-    content: '';
-    position: absolute;
-    width: 22%;
-    height: 140px;
-    top: 36px;
-    background: linear-gradient(180deg, rgba(0,0,0,0.06), transparent);
-    border-radius: 8px;
-    z-index: 0;
-}
-.envelope-back::before{ left: 6%; transform: skewX(-6deg); }
-.envelope-back::after{ right: 6%; transform: skewX(6deg); }
-
 .envelope-inner-pattern {
     position:absolute;
     top: 18px;
@@ -304,41 +290,6 @@ body {
     bottom: 34px;
     opacity: 1;
 }
-
-.envelope-back::before{
-    /* top flap shape */
-    content: '';
-    position: absolute;
-    top: -120px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 560px;
-    height: 260px;
-    background: linear-gradient(180deg,#f7f3f1,#efe9e7);
-    border-radius: 8px;
-    clip-path: polygon(50% 0%, 98% 28%, 98% 100%, 2% 100%, 2% 28%);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-    z-index: 0;
-}
-
-.wax-seal{
-    position: absolute;
-    top: 100px; /* sits on the flap */
-    left: 50%;
-    transform: translateX(-50%);
-    width: 74px;
-    height: 74px;
-    background: #0f0f0f;
-    color: #fff;
-    border-radius: 50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-weight:700;
-    z-index: 8;
-    box-shadow: 0 12px 26px rgba(0,0,0,0.4);
-}
-
 /* hearts emitter inside envelope flap */
 .heart-emitter{
     position: absolute;
@@ -412,7 +363,7 @@ body {
     height:100%;
     object-fit:cover;
     object-position: center left;
-    filter: grayscale(85%) contrast(0.9) brightness(0.55);
+    filter: grayscale(20%) ;
 }
 
 .left-overlay{
@@ -446,6 +397,10 @@ body {
     font-size:3.6rem;
     color:#4b4b4b;
 }
+/* stacked day (02nd & 03rd) styling */
+.day-stack { display:flex; flex-direction:column; align-items:center; gap:0.2rem; }
+.day-part { font-size:3.6rem; color:#4b4b4b; margin:0; line-height:1; }
+.amp { font-family: 'Pinyon Script', 'Great Vibes', cursive; font-size:2.6rem; color:#4b4b4b; line-height:1; }
 .month{ font-family: 'Pinyon Script', 'Great Vibes', cursive; font-size:3.8rem; margin: 10px 0; }
 .year{ font-size:2.4rem; color:#4b4b4b; margin-bottom: 14px; }
 
@@ -596,13 +551,6 @@ body {
 
     .back-button { display: block !important; margin: 1.2rem auto 2rem !important; left: auto !important; transform: none !important; }
 }
-
-/* Ensure image fully fills its block on mobile: make card/image heights automatic and overlay sit below image */
-/* @media (max-width: 900px) {
-    .card, .left-card, .right-card { height: auto !important; overflow: hidden !important; }
-    .left-photo { display: block !important; width: 100% !important; height: auto !important; max-height: none !important; }
-    .left-overlay { position: relative !important; background: none !important; margin: 0 !important; padding: 1rem !important; }
-} */
 
 .and-text {
     font-family: 'Pinyon Script', 'Great Vibes', cursive;
@@ -761,6 +709,8 @@ body {
     .year {
         font-size: 3rem;
     }
+    .day-part { font-size: 2.6rem; }
+    .amp { font-size: 2rem; }
     
     .floral-decoration {
         font-size: 2.5rem;
@@ -778,8 +728,14 @@ body {
 
 /* Mobile improvements: stack cards and adjust spacing for small screens */
 @media (max-width: 720px) {
-    .envelope-back::before{
+    .envelope-back{
     width: auto;
+    height: 200px;
+}
+.envelope-image {
+    width: auto;
+    max-width: max-content;
+
 }
     .invitation-page {
         padding: 1rem;
@@ -822,7 +778,7 @@ body {
         width: 100%;
         height: 260px;
         object-fit: cover;
-        filter: grayscale(60%) contrast(0.95) brightness(0.6);
+        filter: grayscale(20%);
         border-radius: 10px;
         display: block;
     }
