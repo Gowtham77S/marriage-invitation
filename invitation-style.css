@@ -989,7 +989,8 @@ html { scroll-behavior: smooth; }
     .hero-content .couple{ font-size: 2.2rem; }
 } */
 
-.hero-cta{ display:inline-block; padding: 0.65rem 1.2rem; background: rgba(0, 0, 0, 0.12); border-radius: 999px; font-weight:600; backdrop-filter: blur(4px); }
+.hero-cta{ display:inline-block; padding: 0.65rem 1.2rem; background: rgba(237, 7, 7, 0.34); border-radius: 999px; font-weight:600; backdrop-filter: blur(4px); }
+.hero-cta:hover{ background: rgba(237, 7, 7, 0.54); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(237, 7, 7, 0.28); }
 /* Countdown timer inside hero */
 #countdown{ display:flex; gap:1rem; justify-content:center; align-items:center; margin: 1rem 0 1.25rem; z-index:2; }
 .countdown-item{ background: rgba(255,255,255,0.09); padding: 0.6rem 0.85rem; border-radius: 8px; min-width:72px; display:flex; flex-direction:column; align-items:center; }

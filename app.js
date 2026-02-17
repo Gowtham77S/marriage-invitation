@@ -308,14 +308,84 @@ document.addEventListener('DOMContentLoaded', function() {
     return overlay;
   }
 
+  function storageKeyFor(url){
+    return 'imgcache:' + encodeURIComponent(url);
+  }
+
+  function getFromStorage(url){
+    try {
+      var k = storageKeyFor(url);
+      var v = localStorage.getItem(k);
+      return v || null;
+    } catch(e){ return null; }
+  }
+
+  function saveToStorage(url, dataUrl){
+    try {
+      var k = storageKeyFor(url);
+      localStorage.setItem(k, dataUrl);
+      return true;
+    } catch(e){ return false; }
+  }
+
+  function fetchToDataUrl(url){
+    return fetch(url, {cache: 'force-cache'}).then(function(r){ if(!r.ok) throw new Error('fetch status '+r.status); return r.blob(); }).then(function(b){
+      return new Promise(function(resolve,reject){
+        var fr = new FileReader();
+        fr.onloadend = function(){ resolve(fr.result); };
+        fr.onerror = reject;
+        fr.readAsDataURL(b);
+      });
+    });
+  }
+
+  function loadImagePreferLocal(thumbEl, fullSrc){
+    return new Promise(function(resolve){
+      // If a thumbnail element exists and is loaded, convert it to dataURL to avoid re-fetch
+      try {
+        if(thumbEl && thumbEl.complete && thumbEl.naturalWidth && thumbEl.naturalHeight){
+          try {
+            var canvas = document.createElement('canvas');
+            canvas.width = thumbEl.naturalWidth;
+            canvas.height = thumbEl.naturalHeight;
+            var ctx = canvas.getContext('2d');
+            ctx.drawImage(thumbEl, 0, 0);
+            var dataUrl = canvas.toDataURL('image/jpeg', 0.92);
+            // attempt to save using fullSrc key if available
+            if(fullSrc) try { saveToStorage(fullSrc, dataUrl); } catch(e){}
+            return resolve(dataUrl);
+          } catch(e){
+            // drawing may fail for cross-origin images; fall through to cached/network
+          }
+        }
+      } catch(e){}
+
+      if(!fullSrc){ return resolve(''); }
+      var cached = getFromStorage(fullSrc);
+      if(cached) return resolve(cached);
+      fetchToDataUrl(fullSrc).then(function(dataUrl){
+        // try to save; ignore errors
+        saveToStorage(fullSrc, dataUrl);
+        resolve(dataUrl);
+      }).catch(function(){
+        // fallback to network URL
+        resolve(fullSrc);
+      });
+    });
+  }
+
   function openLightboxAt(index, items) {
     if (!items || !items.length) return;
     index = (index + items.length) % items.length;
     var overlay = createOverlay();
 
     var img = document.createElement('img');
-    img.src = items[index].href || items[index].dataset.src;
-    img.alt = items[index].querySelector('img')?.alt || '';
+    var thumbEl = items[index].querySelector('img');
+    var fullSrc = items[index].href || items[index].dataset.src;
+    img.alt = thumbEl?.alt || '';
+
+    // prefer thumbnail element (converted to dataURL) else localStorage cached dataURL, else fetch and store
+    loadImagePreferLocal(thumbEl, fullSrc).then(function(src){ img.src = src; });
 
     var btnClose = document.createElement('button');
     btnClose.type = 'button';
@@ -347,8 +417,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function show(i){
       index = (i + items.length) % items.length;
-      img.src = items[index].href || items[index].dataset.src;
-      img.alt = items[index].querySelector('img')?.alt || '';
+      var thumbEl2 = items[index].querySelector('img');
+      var fullSrc2 = items[index].href || items[index].dataset.src;
+      img.alt = thumbEl2?.alt || '';
+      loadImagePreferLocal(thumbEl2, fullSrc2).then(function(src){ img.src = src; });
       overlay.focus();
     }
 
