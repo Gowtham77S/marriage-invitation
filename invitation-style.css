@@ -547,7 +547,6 @@ html { scroll-behavior: smooth; }
     z-index: 8;
 }
 
-.back-button{ margin-top: 26rem; }
 
 /* Left side - Photo section */
 .card-left {
@@ -753,7 +752,7 @@ html { scroll-behavior: smooth; }
 /* Back button */
 .back-button {
     display: inline-block;
-    /* margin: 2rem auto; */
+    margin: 2rem auto;
     padding: 0.8rem 2rem;
     background: #2a2a2a;
     color: #fff;
@@ -763,8 +762,6 @@ html { scroll-behavior: smooth; }
     letter-spacing: 1px;
     transition: all 0.3s ease;
     position: relative;
-    left: 50%;
-    transform: translateX(-50%);
 }
 
 /* .back-button:hover {
