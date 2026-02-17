@@ -1,0 +1,9 @@
+[
+  { "src": "assets/invite_left.jpg", "thumb": "assets/invite_left.jpg", "alt": "Couple 1", "position": "center top" },
+    { "src": "assets/invite_left.jpg", "thumb": "assets/invite_left.jpg", "alt": "Couple 1", "position": "left" },
+      { "src": "assets/invite_left.jpg", "thumb": "assets/invite_left.jpg", "alt": "Couple 1", "position": "right" },
+        { "src": "assets/invite_left.jpg", "thumb": "assets/invite_left.jpg", "alt": "Couple 1", "position": "bottom" },
+          { "src": "assets/invite_left.jpg", "thumb": "assets/invite_left.jpg", "alt": "Couple 1", "position": "center" },
+            { "src": "assets/invite_left.jpg", "thumb": "assets/invite_left.jpg", "alt": "Couple 1", "position": "right bottom" }
+
+]
