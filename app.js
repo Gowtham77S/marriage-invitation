@@ -163,6 +163,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // --- audio-player.js ---
 document.addEventListener('DOMContentLoaded', function(){
+  // only enable audio player on the invitation page
+  if(!document.querySelector('.invitation-page')) return;
+
   var audio = document.getElementById('page-audio');
   if(!audio){
     audio = document.createElement('audio');
