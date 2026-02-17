@@ -932,20 +932,20 @@ html { scroll-behavior: smooth; }
 
 /* Hero / first slide styles (replicated from target site) */
 .hero-slide{
-    position: relative;
+    /* position: relative;
     width: 100%;
-    min-height: 64vh;
+    min-height: 700px;
     display: flex;
     align-items: center;
     justify-content: center;
     color: #fff;
-    background-image: url('https://we.shyamjos.com/images/RS1.jpg');
+    background-image: url('assets/invite_left.jpg');
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
-    z-index: 2;
+    z-index: 2; */
 }
-.hero-overlay{
+/* .hero-overlay{
     position: absolute;
     inset: 0;
     background: linear-gradient(180deg, rgba(0,0,0,0.32), rgba(0,0,0,0.48));
@@ -955,13 +955,13 @@ html { scroll-behavior: smooth; }
 .hero-content .couple{ font-family: 'Cormorant Garamond', serif; font-size: clamp(2.4rem, 6vw, 5rem); letter-spacing: 1px; margin-bottom: 0.5rem; }
 .hero-date{ font-size: 1.1rem; opacity: 0.95; margin-bottom: 0.75rem; }
 .hero-quote{ font-size: 1rem; opacity: 0.95; margin-bottom: 1.25rem; }
-.hero-cta{ display:inline-block; padding: 0.65rem 1.2rem; background: rgba(255,255,255,0.12); border-radius: 999px; font-weight:600; backdrop-filter: blur(4px); }
 
 @media (max-width: 720px) {
     .hero-content{ padding: 2.25rem 1rem; }
     .hero-content .couple{ font-size: 2.2rem; }
-}
+} */
 
+.hero-cta{ display:inline-block; padding: 0.65rem 1.2rem; background: rgba(0, 0, 0, 0.12); border-radius: 999px; font-weight:600; backdrop-filter: blur(4px); }
 /* Countdown timer inside hero */
 #countdown{ display:flex; gap:1rem; justify-content:center; align-items:center; margin: 1rem 0 1.25rem; z-index:2; }
 .countdown-item{ background: rgba(255,255,255,0.09); padding: 0.6rem 0.85rem; border-radius: 8px; min-width:72px; display:flex; flex-direction:column; align-items:center; }
@@ -983,11 +983,27 @@ html { scroll-behavior: smooth; }
 .events-inner{ max-width: 1100px; margin: 0 auto; }
 .section-title{ font-family: 'Pinyon Script', 'Great Vibes', cursive; font-size:4.6rem; color:#4b4b4b; line-height:1; text-align:center; margin: 0; }
 .events-grid{ display:grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 1.25rem; margin-top: 1.25rem; }
-.event-card{ background: #fff; padding: 1.6rem 1.2rem; border-radius: 8px; box-shadow: none; text-align: center; border: 1.6px solid rgba(60,60,60,0.14); }
+.event-card{ background: #fff; padding: 1.6rem 1.2rem; border-radius: 8px; box-shadow: none; text-align: center; border: 1.6px solid rgba(60,60,60,0.14);
+.divider {
+    display: flex;
+    justify-content: space-around;
+    hr {
+        border:0; border-top:1px solid rgba(0,0,0,0.08); margin:0.5rem 0 1rem 0; 
+    }
+}
+}
+
 .event-title{ font-size: 1.2rem; margin: 0 0 0.6rem 0; letter-spacing: 2px; text-transform: uppercase; }
 .event-card hr{ border:0; border-top:1px solid rgba(0,0,0,0.08); margin:0.5rem 0 1rem 0; }
-.event-meta{ display:flex; gap:2rem; justify-content:center; align-items:center; margin-bottom:0.75rem; }
-.meta-item{ display:flex; flex-direction:column; align-items:center; gap:0.35rem; color:#333; }
+.event-meta{ display:flex; gap:1rem; justify-content:center; align-items:center; margin-bottom:0.75rem; flex-direction: column; }
+.divider{ display:flex; align-items:center; justify-content:center; gap:1.25rem; width:100%; }
+.divider .event-meta{ flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+.vline{ width:1px; height:56px; background: rgba(0,0,0,0.12); border-radius:2px; display:inline-block; }
+@media (max-width: 720px) {
+    .divider{ flex-direction:column; gap:0.75rem; }
+    .vline{ width:48px; height:1px; }
+}
+.meta-item{ display:flex; align-items:center; gap:0.35rem; color:#333; }
 .meta-item svg{ display:block; }
 .meta-text{ font-size:0.95rem; }
 .event-location{ color: #444; margin-top: 0.6rem; font-size: 0.95rem; }
