@@ -6,7 +6,11 @@
 
 html, body {
     font-family: 'Cormorant Garamond', 'Georgia', serif;
-    background: #f8d5d9;
+    background-image: url("assets/elegant10.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    /* background-attachment: fixed; */
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -107,8 +111,16 @@ html { scroll-behavior: smooth; }
     line-height: 1;
 }
 
-.flowers.left { left: 10px; bottom: 18px; transform: rotate(-8deg); }
-.flowers.right { right: 10px; top: 10px; transform: rotate(6deg); }
+.flowers.left { left: 10px; bottom: 18px; transform: rotate(-8deg); 
+img {
+    width: 300px;
+    height: 400px;
+}}
+.flowers.right { right: 10px; top: 10px; transform: rotate(6deg); 
+img {
+    width: 300px;
+    height: 400px;
+}}
 .flowers.left-right { right: 10px; bottom: 18px; transform: rotate(-8deg); }
 .flowers.right-1 { right: 0px; top: 25px; transform: rotate(19deg); }
 .flowers.right-2 { left: -22px; top: 45px; transform: rotate(-90deg); }
@@ -246,6 +258,7 @@ html { scroll-behavior: smooth; }
 
 /* If using a single envelope image (assets/envelope-open.png) */
 .envelope-image{
+    height: 350px;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -513,11 +526,13 @@ html { scroll-behavior: smooth; }
     top: -68px; /* left-card.top (40px) - 20% of left-card.height (540px * 0.2 = 108px) => 40 - 108 = -68 */
     width: 420px;
     height: 600px;
-    background: #fbf9f8;
+    background: #ffff;
+     background: url("assets/elegant9.png") no-repeat top center fixed;
     padding: 70px 42px 0px;
     z-index: 4; /* right card above left card */
     border-radius: 12px;
     transform: rotate(0.6deg);
+    border: 1px solid;
 }
 
 .card-content { display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%; }
@@ -832,7 +847,7 @@ html { scroll-behavior: smooth; }
 /* Gallery styles */
 .gallery-slide { padding: 2.5rem 0;min-height: 700px; }
 .gallery-inner { max-width: 1200px; margin: 0 auto; text-align: center; }
-.gallery-inner .section-title { font-family: 'Pinyon Script', 'Great Vibes', cursive; font-size: 4.2rem; color: #6b6b6b; margin-bottom: 1.6rem; }
+.gallery-inner .section-title { font-family: 'Pinyon Script', 'Great Vibes', cursive; font-size: 4.2rem; color: #4b4b4b;; margin-bottom: 1.6rem; }
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -898,7 +913,7 @@ html { scroll-behavior: smooth; }
     height: 200px;
 }
 .envelope-image {
-    width: auto;
+    height: 150px;
     max-width: max-content;
 
 }
@@ -989,8 +1004,8 @@ html { scroll-behavior: smooth; }
     .hero-content .couple{ font-size: 2.2rem; }
 } */
 
-.hero-cta{ display:inline-block; padding: 0.65rem 1.2rem; background: rgba(237, 7, 7, 0.34); border-radius: 999px; font-weight:600; backdrop-filter: blur(4px); }
-.hero-cta:hover{ background: rgba(237, 7, 7, 0.54); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(237, 7, 7, 0.28); }
+.hero-cta{ display:inline-block; padding: 0.65rem 1.2rem; background: rgba(82, 163, 132, 1); border-radius: 999px; font-weight:600; backdrop-filter: blur(4px); }
+.hero-cta:hover{ background: rgba(82, 163, 132, 1); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(82, 163, 132, 1) }
 /* Countdown timer inside hero */
 #countdown{ display:flex; gap:1rem; justify-content:center; align-items:center; margin: 1rem 0 1.25rem; z-index:2; }
 .countdown-item{ background: rgba(255,255,255,0.09); padding: 0.6rem 0.85rem; border-radius: 8px; min-width:72px; display:flex; flex-direction:column; align-items:center; }
@@ -1006,11 +1021,10 @@ html { scroll-behavior: smooth; }
 /* Events slide styles */
 .events-slide{
     min-height: 700px;
-    background: linear-gradient(180deg, rgba(248,213,217,0.6), rgba(255,255,255,0.02));
     color: #2a2a2a;
 }
 .events-inner{ max-width: 1100px; margin: 0 auto; }
-.section-title{ font-family: 'Pinyon Script', 'Great Vibes', cursive; font-size:4.6rem; color:#4b4b4b; line-height:1; text-align:center; margin: 0; }
+.section-title{ font-family: 'Pinyon Script', 'Great Vibes', cursive; font-size:4.6rem; color:#4b4b4b;; line-height:1; text-align:center; margin: 0; }
 .events-grid{ display:grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 1.25rem; margin-top: 1.25rem; }
 .event-card{ background: #fff; padding: 1.6rem 1.2rem; border-radius: 8px; box-shadow: none; text-align: center; border: 1.6px solid rgba(60,60,60,0.14);
 .divider {
